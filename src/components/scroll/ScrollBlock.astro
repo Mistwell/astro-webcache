@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import bird from './test-img.jpg';
+
+---
+
+<div class="min-h-[200vh] " data-scroll>
+    <div data-box class="inline-block">
+        <Image alt="тест" src={bird} fetchpriority={"high"} />
+    </div>
+</div>
+<script>
+import gsap from "gsap"; 
+import {ScrollTrigger} from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger) 
+
+gsap.to("[data-scroll]",{
+    x:300,
+    scrollTrigger:{
+        trigger: '[data-scroll]',
+        pin: true,  
+        markers:false,
+        scrub:0.1,
+    }
+})
+
+
+</script>
